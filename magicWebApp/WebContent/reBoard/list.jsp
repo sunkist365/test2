@@ -10,6 +10,11 @@
 		pageNUM = "1";
 	}
 	
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage == null){
+		currentPage = "1";
+	}
+	
 	BoardDBBean db = BoardDBBean.getinstance();
 	ArrayList<BoardBean> boardList = db.listBoard(pageNUM);
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -29,7 +34,8 @@
 		<table align="center" width="600">
 			<tr>
 				<td align="right">
-					<a href="write.jsp?pageNUM=<%=pageNUM%>">
+					<a href="write.jsp?currentPage=<%=currentPage%>">
+<%-- 					<a href="write.jsp?pageNUM=<%=pageNUM%>"> --%>
 						<button type="button" value="글쓰기">글쓰기</button>
 					</a>
 				</td>
@@ -69,7 +75,8 @@
 							%><img src="../images/AnswerLine.gif" width="16" height="16" boarder="0"><%
 						}
 					%>
-					<a href="show.jsp?b_id=<%=b_id%>&pageNUM=<%=pageNUM%>">
+					<a href="show.jsp?b_id=<%=b_id%>&currentPage=<%=currentPage%>">
+<%-- 					<a href="show.jsp?b_id=<%=b_id%>&pageNUM=<%=pageNUM%>"> --%>
 						<%=b_title%>
 					</a>
 				</td>
@@ -83,7 +90,7 @@
 		</table>
 		<br><br>
 		<div align="center">		
-			<%= BoardBean.pageNumber(4) %>
+			<%= BoardBean.pageNumber1(5) %>
 		</div>
 		<table align="center" width="800">
 			<tr>

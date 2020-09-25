@@ -112,6 +112,7 @@ public class BoardDBBean {
 	}
 	
 	//게시판에 보여줄 내용(제목, 작성자, 날짜, 조회수 등)
+	//게시글을 정해진만큼 보여주기 위해 현재 페이지를 매개변수로 받는다.
 	public ArrayList<BoardBean> listBoard(String pageNumber) {
 		Connection con = null;
 		Statement stmt = null;
@@ -126,7 +127,9 @@ public class BoardDBBean {
 		
 		try {
 			con = getConnection();
-			//페이징을 스크롤하며 페이징, 커서단위로 게시글을 업데이트
+			//TYPE_SCROLL_SENSITIVE : SCROLL도 가능하면서 변경된 사항도 적용됨(양방향 스크롤시 업데이트 반영) 
+			//CONCUR_UPDATABLE : 커서의 위치에서 정보 업데이트 가능. 
+			//ResultSet이 저장하고 있는 레코드들을 직접 수정해야 할 경우.(Resultset Object의 변경이 가능)
 			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			pageset=stmt.executeQuery("select count(b_id) from boardT");
 			
@@ -136,16 +139,25 @@ public class BoardDBBean {
 				pageset.close();
 			}
 			
-			if(dbcount % BoardBean.pagesize == 0) {
-				BoardBean.pagecount = dbcount / (BoardBean.pagesize);
+			if(dbcount % BoardBean.dataPerPage == 0) {
+				BoardBean.totalPage = dbcount / (BoardBean.dataPerPage);
 			}else {
-				BoardBean.pagecount = dbcount / (BoardBean.pagesize)+1;
+				BoardBean.totalPage = dbcount / (BoardBean.dataPerPage)+1;
 			}
-			
 			if(pageNumber != null) {
-				BoardBean.pageNUM = Integer.parseInt(pageNumber);
-				absolutepage = (BoardBean.pageNUM-1) * BoardBean.pagesize + 1;
+				BoardBean.currentPage = Integer.parseInt(pageNumber);
+				absolutepage = (BoardBean.currentPage-1) * BoardBean.dataPerPage + 1;
 			}
+//			if(dbcount % BoardBean.pagesize == 0) {
+//				BoardBean.pagecount = dbcount / (BoardBean.pagesize);
+//			}else {
+//				BoardBean.pagecount = dbcount / (BoardBean.pagesize)+1;
+//			}
+			
+//			if(pageNumber != null) {
+//				BoardBean.pageNUM = Integer.parseInt(pageNumber);
+//				absolutepage = (BoardBean.pageNUM-1) * BoardBean.pagesize + 1;
+//			}
 			
 //			stmt = con.createStatement();
 //			sql = "select * from boardT order by b_id";
@@ -154,10 +166,12 @@ public class BoardDBBean {
 			rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {
+				//absolutepage로 커서를 이동한다.
 				rs.absolute(absolutepage);
 				int count=0;
 				
-				while(count < BoardBean.pagesize) {
+				while(count < BoardBean.dataPerPage) {
+//				while(count < BoardBean.pagesize) {
 					BoardBean board = new BoardBean();
 					board.setB_id(rs.getInt(1));
 					board.setB_name(rs.getString(2));
@@ -175,6 +189,7 @@ public class BoardDBBean {
 					
 					boardList.add(board);
 					
+					//마지막 레코드가 존재하는 행인가 확인
 					if(rs.isLast()) {
 						break;
 					}else {
