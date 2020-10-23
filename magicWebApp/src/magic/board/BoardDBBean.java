@@ -23,6 +23,7 @@ public class BoardDBBean {
 		return ds.getConnection();
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////
 	//글 쓴 정보를 데이터베이스에 입력
 	public int insertBoard(BoardBean board) {
 		Connection con = null;
@@ -73,23 +74,24 @@ public class BoardDBBean {
 			}
 			
 			sql = "insert into boardT(b_name, b_email"
-					+ ", b_title, b_content, b_id, b_date, b_pwd, b_ip, b_ref, b_step, b_level)"
-					+ " values(?,?,?,?,?,?,?,?,?,?,?)";
+					+ ", b_title, b_content, b_id, b_date, b_pwd"
+					+ ", b_ip, b_ref, b_step, b_level, b_fname, b_fsize)"
+					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, board.getB_name());
-//			pstmt.setString(1, HanConv.toKor(board.getB_name())); //(euc-kr일때, 3,4번도 같이 해준다.)
+//			pstmt.setString(1, HanConv.toKor(board.getB_name())); //(인코딩이 euc-kr일때)
 			pstmt.setString(2, board.getB_email());
 			pstmt.setString(3, board.getB_title());
 			pstmt.setString(4, board.getB_content());
 			pstmt.setInt(5, num);
 			pstmt.setTimestamp(6, board.getB_date());
-//			pstmt.setInt(7, 0); b_hit는 default값이 0이다.
 			pstmt.setString(7, board.getB_pwd());
 			pstmt.setString(8, board.getB_ip());
 			pstmt.setInt(9, ref);
 			pstmt.setInt(10, step);
 			pstmt.setInt(11, level);
-			
+			pstmt.setString(12, board.getB_fname());
+			pstmt.setInt(13, board.getB_fsize());
 			
 			pstmt.executeUpdate();
 			
@@ -111,6 +113,7 @@ public class BoardDBBean {
 		return 1;
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////
 	//게시판에 보여줄 내용(제목, 작성자, 날짜, 조회수 등)
 	//게시글을 정해진만큼 보여주기 위해 현재 페이지를 매개변수로 받는다.
 	public ArrayList<BoardBean> listBoard(String pageNumber) {
@@ -138,26 +141,17 @@ public class BoardDBBean {
 				dbcount = pageset.getInt(1);
 				pageset.close();
 			}
-			
-			if(dbcount % BoardBean.dataPerPage == 0) {
-				BoardBean.totalPage = dbcount / (BoardBean.dataPerPage);
+
+			if(dbcount % BoardBean.pagesize == 0) {
+				BoardBean.pagecount = dbcount / (BoardBean.pagesize);
 			}else {
-				BoardBean.totalPage = dbcount / (BoardBean.dataPerPage)+1;
+				BoardBean.pagecount = dbcount / (BoardBean.pagesize)+1;
 			}
-			if(pageNumber != null) {
-				BoardBean.currentPage = Integer.parseInt(pageNumber);
-				absolutepage = (BoardBean.currentPage-1) * BoardBean.dataPerPage + 1;
-			}
-//			if(dbcount % BoardBean.pagesize == 0) {
-//				BoardBean.pagecount = dbcount / (BoardBean.pagesize);
-//			}else {
-//				BoardBean.pagecount = dbcount / (BoardBean.pagesize)+1;
-//			}
 			
-//			if(pageNumber != null) {
-//				BoardBean.pageNUM = Integer.parseInt(pageNumber);
-//				absolutepage = (BoardBean.pageNUM-1) * BoardBean.pagesize + 1;
-//			}
+			if(pageNumber != null) {
+				BoardBean.pageNUM = Integer.parseInt(pageNumber);
+				absolutepage = (BoardBean.pageNUM-1) * BoardBean.pagesize + 1;
+			}
 			
 //			stmt = con.createStatement();
 //			sql = "select * from boardT order by b_id";
@@ -170,8 +164,8 @@ public class BoardDBBean {
 				rs.absolute(absolutepage);
 				int count=0;
 				
-				while(count < BoardBean.dataPerPage) {
-//				while(count < BoardBean.pagesize) {
+//				while(count < BoardBean.dataPerPage) {
+				while(count < BoardBean.pagesize) {
 					BoardBean board = new BoardBean();
 					board.setB_id(rs.getInt(1));
 					board.setB_name(rs.getString(2));
@@ -185,7 +179,9 @@ public class BoardDBBean {
 					board.setB_ref(rs.getInt(10));
 					board.setB_step(rs.getInt(11));
 					board.setB_level(rs.getInt(12));
-					board.setDate2(rs.getString(13));
+					board.setB_fname(rs.getString(13));
+					board.setB_fsize(rs.getInt(14));
+					board.setDate2(rs.getString(15));
 					
 					boardList.add(board);
 					
@@ -213,6 +209,7 @@ public class BoardDBBean {
 		return boardList;
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////
 	//제목을 클릭하면 게시글이 표현되는 메소드(제목에 해당하는 b_id를 넘김)
 	public BoardBean getBoard(int b_id, boolean hitadd) {
 		Connection con = null;
@@ -255,7 +252,9 @@ public class BoardDBBean {
 				board.setB_ref(rs.getInt(10));
 				board.setB_step(rs.getInt(11));
 				board.setB_level(rs.getInt(12));
-				board.setDate2(rs.getString(13));
+				board.setB_fname(rs.getString(13));
+				board.setB_fsize(rs.getInt(14));
+				board.setDate2(rs.getString(15));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -271,6 +270,7 @@ public class BoardDBBean {
 		return board;
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////
 	//DB에서 삭제(패스워드 확인)
 	public int deleteBoard(int b_id, String chk_pwd) {
 		Connection con = null;
@@ -317,6 +317,7 @@ public class BoardDBBean {
 		return re;
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////
 	//DB수정
 	public int editBoard(BoardBean board) {
 		Connection con = null;

@@ -30,7 +30,7 @@
 %>
 <body>
 	<h1 align="center">글 올 리 기</h1>
-	<form action="write_ok.jsp" method="post" name="form">
+	<form action="write_ok.jsp" method="post" name="form" enctype="multipart/form-data">
 		<input type="hidden" name="b_id" value="<%=b_id%>">
 		<input type="hidden" name="b_ref" value="<%=b_ref%>">
 		<input type="hidden" name="b_step" value="<%=b_step%>">
@@ -51,6 +51,12 @@
 						<%}else{ %>
 						<input type="text" name="b_title" size="50" value="[답변]:<%=b_title %>">
 						<%} %>
+					</td>
+				</tr>
+				<tr>
+					<td>파일</td>
+					<td colspan="3">
+						<input type="file" name="b_fname" size="50">
 					</td>
 				</tr>
 				<tr>

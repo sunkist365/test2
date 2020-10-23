@@ -1,14 +1,29 @@
 package myUtil;
 
+import java.io.UnsupportedEncodingException;
+
 public class HanConv {
 	public static String toKor(String str) {
 		if(str==null || str.equals("") || str.equals("null")) {
 			return str;
 		}
 		try {
-			return new String(str.getBytes("8859_1"), "euc-kr"); // 8859_1 Àº utf-8 / euc-kr Àº utf-16 ÀÎÄÚµù ¹æ½Ä
-		}catch(Exception e) {									 // ¿¹¿ÜÃ³¸®.
+			return new String(str.getBytes("8859_1"), "euc-kr"); // 8859_1 ï¿½ï¿½ utf-8 / euc-kr ï¿½ï¿½ utf-16 ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½ï¿½
+		}catch(Exception e) {									 // ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½.
 			e.printStackTrace();
+			return str;
+		} 
+	}
+	
+	public static String toKortThree(String str) {
+		if(str==null || str.equals("") || str.equals("null")) {
+			return str;
+		}
+		try {
+			String result = null;
+			return new String(str.getBytes("euc-kr"), "8859_1"); // 8859_1 ï¿½ï¿½ utf-8 / euc-kr ï¿½ï¿½ utf-16 ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½ï¿½
+		}catch(UnsupportedEncodingException uee) {									 // ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½.
+			uee.printStackTrace();
 			return str;
 		} 
 	}

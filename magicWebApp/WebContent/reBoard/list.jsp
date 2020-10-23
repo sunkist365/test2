@@ -10,17 +10,12 @@
 		pageNUM = "1";
 	}
 	
-	String currentPage = request.getParameter("currentPage");
-	if(currentPage == null){
-		currentPage = "1";
-	}
-	
 	BoardDBBean db = BoardDBBean.getinstance();
 	ArrayList<BoardBean> boardList = db.listBoard(pageNUM);
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
-	String b_name, b_email, b_title, b_content, b_date2;
-	int b_id=0, b_hit=0, b_level=0;
+	String b_name, b_email, b_title, b_content, b_date2, b_fname;
+	int b_id=0, b_hit=0, b_level=0, b_fsize=0;
 	Timestamp b_date;
 %>
 <!DOCTYPE html>
@@ -34,8 +29,7 @@
 		<table align="center" width="600">
 			<tr>
 				<td align="right">
-					<a href="write.jsp?currentPage=<%=currentPage%>">
-<%-- 					<a href="write.jsp?pageNUM=<%=pageNUM%>"> --%>
+ 					<a href="write.jsp?pageNUM=<%=pageNUM%>">
 						<button type="button" value="글쓰기">글쓰기</button>
 					</a>
 				</td>
@@ -44,10 +38,11 @@
 		<table align="center" width="800" border="1">
 			<tr height="25">
 				<th width="40">번호</th>
+				<th width="80">첨부파일</th>
 				<th width="450">글제목</th>
 				<th width="120">작성자</th>
 				<th width="150">작성일</th>
-				<th width="50">조회수</th>
+				<th width="60">조회수</th>
 			</tr>
 			<%
 				for(int i=0; i<boardList.size(); i++){
@@ -62,10 +57,21 @@
 					b_date2 = board.getDate2();
 					b_hit = board.getB_hit();
 					b_level = board.getB_level();
+					b_fname = board.getB_fname();
+					b_fsize = board.getB_fsize();
 			%>
 			<tr onmouseover="this.style.background='#ccc'" 
 				onmouseout="this.style.background='#fff'">
 				<td align="center"><%=b_id%></td>
+				<td>
+					<%
+						if(b_fsize > 0){
+					%>
+							<img src="../images/zip.gif" alt="<% out.print(b_fname+"("+b_fsize/1024+")");%>KByte">
+					<%
+						}
+					%>
+				</td>
 				<td>
 					<% 
 						if(b_level>0){
@@ -75,8 +81,7 @@
 							%><img src="../images/AnswerLine.gif" width="16" height="16" boarder="0"><%
 						}
 					%>
-					<a href="show.jsp?b_id=<%=b_id%>&currentPage=<%=currentPage%>">
-<%-- 					<a href="show.jsp?b_id=<%=b_id%>&pageNUM=<%=pageNUM%>"> --%>
+ 					<a href="show.jsp?b_id=<%=b_id%>&pageNUM=<%=pageNUM%>">
 						<%=b_title%>
 					</a>
 				</td>
@@ -90,7 +95,7 @@
 		</table>
 		<br><br>
 		<div align="center">		
-			<%= BoardBean.pageNumber1(5) %>
+			<%= BoardBean.pageNumber(5) %>
 		</div>
 		<table align="center" width="800">
 			<tr>

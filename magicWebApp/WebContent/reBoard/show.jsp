@@ -11,9 +11,9 @@
 	BoardBean board = db.getBoard(b_id, true); //조회수를 늘린다.
 	/* SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm"); */
 	
-	String b_name="", b_email="", b_title="", b_content="", b_date2="";
+	String b_name="", b_email="", b_title="", b_content="", b_date2="", b_fname="";
 	/* Timestamp b_date = null; */
-	int b_hit=0;
+	int b_hit=0, b_fsize=0;
 	
 	if(board != null){
 		b_title = board.getB_title();
@@ -23,6 +23,8 @@
 		/* b_date = board.getB_date(); */
 		b_date2 = board.getDate2();
 		b_hit = board.getB_hit();
+		b_fname = board.getB_fname();
+		b_fsize = board.getB_fsize();
 	}
 %>
 
@@ -50,6 +52,21 @@
 				<td  width="200" align="center">
 				<%-- <%= sdf.format(b_date) %> --%>
 				<%=b_date2 %>
+				</td>
+			</tr>
+			<tr>
+				<th>파일</th>
+				<td colspan="3" align="center">
+					<%
+						if(b_fname != null){
+					%>
+							<img src="../images/zip.gif">&nbsp;
+							<a href="./upload/<%=b_fname %>">
+								(원본파일 :&nbsp;<%=b_fname%>)
+							</a>
+					<%
+						}
+					%>
 				</td>
 			</tr>
 			<tr>

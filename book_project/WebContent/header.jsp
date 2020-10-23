@@ -6,16 +6,6 @@ pageEncoding="UTF-8"%>
 	String name = (String)session.getAttribute("name");
 
 %>
-<% 
-	if("A".equals(mCk.getGrade())){ %>
-		<input type="button" value="관리자 페이지로 이동" onclick="location.href='#'">
-		<input type="button" value="회원정보수정" onclick="location.href='#'" disabled="disabled" style="display:none;">
-	<%
-	}else{ %>
-		<input type="button" value="관리자 페이지로 이동" onclick="location.href='#'" disabled="disabled" style="display:none;">
-		<input type="button" value="회원정보수정" onclick="location.href='#'">
-		<%}
-%>
 <header>
 <%
 	if(session.getAttribute("Member") == null){
@@ -26,7 +16,6 @@ pageEncoding="UTF-8"%>
         <ul>
           <li><a href="login.jsp">로그인</a></li>
           <li><a href="register.jsp">회원가입</a></li>
-          <li><a href="#">출석체크</a></li>
         </ul>
       </div>
     </div>
@@ -39,8 +28,21 @@ pageEncoding="UTF-8"%>
       <div class="login">
         <ul>
           <li>안녕하세요! <%=name%>(<%=id%>)님</li>
-          <li><button type="button" value="로그아웃" onclick="location.href='logout.jsp'"></button></li>
-          <li><a href="#">출석체크</a></li>
+          <li><input type="button" value="로그아웃" onclick="location.href='logout.jsp'"></input></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<%
+	}else if(session.getAttribute("Member").equals("admin")){
+%>
+  <div class="login_wrap">
+    <div class="container">
+      <div class="login">
+        <ul>
+          <li>안녕하세요! 관리자님</li>
+          <li><input type="button" value="관리자 페이지" onclick="location.href='admin_index.jsp'"></input></li>
+          <li><input type="button" value="로그아웃" onclick="location.href='logout.jsp'"></input></li>
         </ul>
       </div>
     </div>
@@ -80,11 +82,11 @@ pageEncoding="UTF-8"%>
       <li>
         <a href="#">국내도서</a>
         <ul class="sub">
-          <li><a href="#">소설</a></li>
-          <li><a href="#">역사</a></li>
-          <li><a href="#">정치</a></li>
-          <li><a href="#">예술</a></li>
-          <li><a href="#">과학</a></li>
+          <li><a href="search_result.jsp?search_genre=01">소설</a></li>
+          <li><a href="search_result.jsp?search_genre=02">역사</a></li>
+          <li><a href="search_result.jsp?search_genre=03">정치</a></li>
+          <li><a href="search_result.jsp?search_genre=04">예술</a></li>
+          <li><a href="search_result.jsp?search_genre=05">과학</a></li>
         </ul>
       </li>
       <li><a href="#">해외도서</a></li>
