@@ -25,7 +25,7 @@
                 <th style="background-color: #b2ebf4">아 이 디</th>
                 <td>
                   <input type="text" name="cs_id" size="20" maxlength="12" />
-                  4~12자의 영문 대소문자와 숫자로만 입력
+                  <input type="button" value="id중복확인" onclick="window.open('id_check_jsp', '팝업창 이름', 'width=#, height=')">
                 </td>
               </tr>
 

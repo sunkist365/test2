@@ -1,0 +1,60 @@
+@charset "EUC-KR";
+
+.add-schedule {
+	width: 700px;
+	border: 1px solid #ddd;
+	margin: 10px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.add-schedule h3 {
+	margin-bottom: 10px;
+}
+
+.add-schedule input[type="text"] {
+	width: 450px;
+	height: 20px;
+	box-sizing: border-box;
+}
+
+.add-schedule span {
+	text-align: right;
+}
+
+.add-schedule input[type="button"], thead input[type="button"] {
+	width: 60px;
+	height: 20px;
+	margin-left: 10px;
+}
+
+.year-btn {
+	width: 700px;
+	text-align: center;
+}
+
+.year-btn h3 {
+	margin: 10px;
+	display: inline-block;
+}
+
+input[type="button"] {
+	width: 30px;
+}
+
+.sche-table{
+	width: 700px;
+	border-collapse: collapse;
+	margin: 10px;
+}
+
+.sche-table tbody tr, .sche-table tbody td {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 5px;
+}
+
+.sche-table tbody {
+	border-top: 3px solid #ddd;
+	border-bottom: 3px solid #ddd;
+}

@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 20px;
+}
+
+.title {
+  border-bottom: 3px solid #11264f;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.title::before {
+  content: "¢º ";
+}
+
+.search {
+  margin: 10px;
+}
+/* **************************************************************************************
+	table
+*************************************************************************************** */
+.border_table_1000 {
+  border: 1px solid #11264f;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  width: 1000px;
+}
+
+.border_table_600 {
+  border: 1px solid #11264f;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  width: 600px;
+}
+
+.border_table_1000 thead,
+.border_table_600 thead{
+  background-color: #eee;
+}
+
+.border_table_1000 tr,
+.border_table_1000 td,
+.border_table_600 tr,
+.border_table_600 td {
+  border: 1px solid #11264f;
+  padding:1px;
+}
+
+.table_col_100 {
+  background-color: #eee;
+  width: 100px;
+}
+.table_col_70 {
+  background-color: #eee;
+  width: 70px;
+}
+
+.table_col_50{
+  width: 50px;
+}
+
+.table_col_150{
+  width: 150px;
+}
+
+.table_col_700{
+  width: 700px;
+}
+
+.table_data {
+  width: 200px;
+  padding-left: 10px;
+}
+
+.border_table_1000 thead,
+.border_table_600 thead,
+.border_table_1000 tbody,
+.border_table_600 tbody,
+.border_table_1000 tfoot,
+.border_table_600 tfoot,
+tfoot,
+tbody {
+  text-align: center;
+}
+
+/* read.jsp table ********************************************************************* */
+.read_table{
+    margin: 10px;
+    width: 1000px;
+    border-collapse: collapse;
+}
+
+.read_table thead, .read_table tbody, .read_table thead tr, .read_table thead td{
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+/* **************************************************************************************
+	table end
+*************************************************************************************** */
+
+

@@ -1,0 +1,130 @@
+@charset "EUC-KR";
+/* studentlist.jsp ***************************************************************/
+.list {
+	display: inline-block;
+	margin: 10px;
+	height: 700px;
+	overflow: auto;
+}
+
+.detail_info {
+	display: inline-block;
+	width: 500px;
+	height: 700px;
+	margin: 10px;
+}
+
+.detail_info_table {
+	width: inherit;
+	border-collapse: collapse;
+}
+
+.detail_info_table tr, .detail_info_table td {
+	text-align: left;
+	border: 1px solid #ddd;
+	padding: 1px 1px 1px 10px;
+}
+
+#list tr:hover.selected td, #list tr:hover td
+	{
+	background-color: #FCE6E0;
+	cursor: pointer;
+}
+
+#list tr.selected td {
+	background-color: #FCE6E0;
+}
+
+/* enroll.jsp ***************************************************************/
+.enroll-table {
+	margin: 10px;
+	border-collapse: collapse;
+}
+
+.enroll-table tr, .enroll-table td {
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	padding: 2px 2px 2px 2px;
+	text-align: left;
+}
+
+.enroll-table td input[class="short-input"] {
+	width: 200px;
+	height: 20px;
+	padding-left: 10px;
+}
+
+.enroll-table td input[class="long-input"] {
+	width: 539px;
+	height: 20px;
+	padding-left: 10px;
+}
+
+.enroll-table td input[name="search"] {
+	width: 60px;
+	box-sizing: border-box;
+	height: 100%;
+	margin: 2px 0 0 2px;
+}
+
+.enroll-table .col0 {
+	font-weight: bold;
+	background-color: #ddd;
+	padding: 2px 2px 2px 10px;	
+}
+
+.enroll-table .col1 {
+	width: 120px;
+	text-align: center;
+}
+
+.enroll-table .col2 {
+	width: 200px;
+	text-align: left;
+}
+
+.enroll-table .col3 {
+	width: 280px;
+	text-align: left;
+}
+
+.enroll-table .col4 {
+	border: none;
+}
+
+.btn-div {
+	width: 860px;
+	text-align: right;
+}
+
+.btn-div input {
+	width: 60px;
+}
+
+/* searchProfessr.jsp ***************************************************************/
+.searchPro-input {
+	width: calc(100% - 20px);
+	height: 30px;
+	font-size: 20px;
+	padding-left: 10px;
+	box-sizing: border-box;
+	margin: 10px;
+}
+.searchTable-wrap {
+	width: calc(100% - 20px);
+	height: 400px;
+	margin:10px;
+	overflow: auto;
+}
+.searchTable-wrap p {
+	width: inherit;
+	margin: 5px;
+}
+.search_btn{
+	width: calc(100% - 20px);
+	text-align: right;
+	margin:10px 0 0 10px;
+}
+.search_btn input{
+	width: 50px;
+}

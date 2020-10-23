@@ -1,0 +1,80 @@
+@charset "EUC-KR";
+
+/**************** 기본 세팅 ****************/
+* {
+  margin: 0;
+  padding: 0;
+}
+nav {
+  width: 250px;
+  height: 100vh;
+  color: white;
+  background-color: #11264f;
+  float: left;
+  overflow: auto;
+}
+section {
+  float: right;
+  width: calc(100% - 250px);
+  height: 100vh;
+}
+
+object {
+  width: 100%;
+  height: 100vh;
+}
+
+ul {
+  list-style: none;
+}
+
+/**************** nav ****************/
+.list a {
+  cursor: pointer;
+}
+.list {
+  border-bottom: 1px solid #fff;
+  padding: 10px 0;
+  position: relative;
+}
+.hasS > a:after {
+  position: absolute;
+  content: attr(data-content);
+  font-weight: bold;
+  background-color: white;
+  color: #11264f;
+  width: 15px;
+  height: 15px;
+  line-height: 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: center;
+  top: 15px;
+}
+.hasS > a{
+	padding: 10px 0 0 10px;
+	margin-bottom: 10px;
+}
+.hasS > a:hover{
+	padding: 10px 0 10px 10px;
+	margin-bottom: 10px;
+}
+
+.sub_list {
+  display: none;
+  margin-top: 5px;
+}
+
+.sub_list li {
+  text-decoration: none;
+  padding: 5px 0px 5px 20px;
+}
+
+.sub_list li::before {
+  content: "- ";
+}
+
+.sub_list li:hover {
+  font-weight: bold;
+  background-color: #1790d4;
+}

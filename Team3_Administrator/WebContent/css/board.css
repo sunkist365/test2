@@ -1,0 +1,174 @@
+@charset "EUC-KR";
+
+a {
+	text-decoration: none;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+	width: 1000px;
+}
+
+input[type="text"] {
+	width: 300px;
+	height: 20px;
+	padding-left: 10px;
+}
+
+.search input[type="button"], .write #deleteBtn {
+	width: 60px;
+	height: inherit;
+	box-sizing: border-box;
+	margin-left: 10px;
+}
+
+.table_div {
+	margin: 10px;
+	height: 700px;
+}
+
+.width1 tbody td:nth-child(3) {
+	text-align: left;
+	padding-left: 10px;
+}
+
+.width2 tbody td:nth-child(4) {
+	text-align: left;
+	padding-left: 10px;
+}
+
+.write {
+	margin: 10px;
+	width: 1000px;
+}
+
+.write #writeBtn {
+	width: 60px;
+	height: inherit;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	float: right;
+}
+
+.page {
+	text-align: center;
+	margin: 20px 0;
+	width: 1000px;
+}
+
+/****************************************************************************
+ ******** read.jsp **********************************************************
+ ****************************************************************************/
+.read_title {
+	margin: 10px;
+}
+
+.read_title::before {
+	display: flex;
+	content: attr(data-content);
+	font-size: 15px;
+	align-content: center;
+}
+
+.read_content {
+	padding: 10px;
+	text-align: left;
+	min-height: 500px;
+}
+
+.read_comment {
+	display: flex;
+	align-content: center;
+}
+
+.read_comment textarea {
+	resize: none;
+	margin: 10px 10px 0 10px;
+	width: 900px;
+	height: 80px;
+	padding: 10px;
+	display: inline-block;
+}
+
+.read_comment input[type="button"] {
+	width: 70px;
+	height: 100px;
+	margin: 10px;
+}
+
+.read_button {
+	text-align: right;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+.read_button input[type="button"] {
+	width: 60px;
+	margin-top: 10px;
+}
+
+/****************************************************************************
+ ******** edit.jsp & reply.jsp **********************************************
+ ****************************************************************************/
+.read_title input[type="text"] {
+	width: 700px;
+	height: inherit;
+	font-size: 18px;
+	height: 20px;
+}
+
+.read_content textarea {
+	resize: none;
+	padding: 10px;
+	width: 1000px;
+	min-height: 500px;
+	display: inline-block;
+}
+
+/****************************************************************************
+ ******** write.jsp **********************************************************
+ ****************************************************************************/
+.write-content, .write-content input[name="title"], .write_textarea,
+	.write-btn {
+	width: 1000px;
+	box-sizing: border-box;
+}
+
+.write-content input[name="title"], .write_textarea {
+	margin: 10px;
+	padding-left: 10px;
+}
+
+.write-content input[type="file"] {
+	margin-left: 10px;
+}
+
+.write-content input[name="title"] {
+	height: 40px;
+	font-size: 24px;
+	line-height: 40px;
+}
+
+.write_textarea {
+	resize: none;
+	height: 500px;
+	padding-top: 10px;
+}
+
+.write-btn {
+	display: flex;
+	justify-content: center;
+}
+
+.write-btn input {
+	width: 60px;
+	margin: 0 5px;
+}
+
+#selectedFileListWrap {
+	margin: 10px 0 0 10px;
+	max-height: 100px;
+	width: 1000px;
+	overflow: auto;
+}
