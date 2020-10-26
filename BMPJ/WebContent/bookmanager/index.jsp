@@ -1,42 +1,62 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>í™ˆíŽ˜ì´ì§€</title>
+    <title>È¨ÆäÀÌÁö</title>
     <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
     <link rel="stylesheet" href="resources/css/book_project.css"/>
     <script type="text/javascript" src="resources/js/book.js"></script>
   </head>
   <body>
 <%
-	String logout = request.getParameter("logout"); 
+	String logout = request.getParameter("logout");
 	if(logout != null && logout.equals("yes")){
 		session.removeAttribute("id");
 		session.removeAttribute("login");
-}
+		%>
+		<jsp:include page="header.jsp"></jsp:include>
+		<%
+	}else{
+		%>
+		<jsp:include page="header_login.jsp"></jsp:include>
+		<%
+	}
 %>
-    <jsp:include page="header.jsp"></jsp:include>
+    
     <main>
-      <div class="jumbotron main_visual">
-        <div class="container">
-          <div></div>
+        <div id="slide">
+			  <input type="radio" name="pos" id="pos1" checked>
+			  <input type="radio" name="pos" id="pos2">
+			  <input type="radio" name="pos" id="pos3">
+			  <input type="radio" name="pos" id="pos4">
+			  <ul>
+			    <li><div class="container main_slide"><img src="resources/images/main01.jpg"></div></li>
+			    <li><div class="container main_slide"><img src="resources/images/main02.jpg"></div></li>
+			    <li><div class="container main_slide"><img src="resources/images/main03.jpg"></div></li>
+			    <li><div class="container main_slide"><img src="resources/images/main04.jpg"></div></li>
+			  </ul>
+ 			  <p class="pos">
+			    <label for="pos1"></label>
+			    <label for="pos2"></label>
+			    <label for="pos3"></label>
+			    <label for="pos4"></label>
+			  </p>
         </div>
-      </div>
     </main>
 
     <section>
       <div class="container">
-        <h3>ì˜¤ëŠ˜ì˜ ì±…</h3>
+        <h3>¿À´ÃÀÇ Ã¥</h3>
         <div class="book_display_1">
           <p><img src="resources/images/2103010101.jpg" /></p>
           <dl>
-            <dt>ì–´ë¦°ì™•ìž</dt>
+            <dt>¾î¸°¿ÕÀÚ</dt>
           </dl>
           <dl>
-            <dd>ìƒí…ì¥íŽ˜ë¦¬</dd>
+            <dd>»ýÅØÁãÆä¸®</dd>
           </dl>
         </div>
       </div>
@@ -44,42 +64,42 @@
 
     <section class="best_seller">
       <div class="container">
-        <h3>ë² ìŠ¤íŠ¸ì…€ëŸ¬</h3>
+        <h3>º£½ºÆ®¼¿·¯</h3>
         <div class="book_display_2">
           <div class="book_display_2_1">
             <p><img src="resources/images/2103010101.jpg" /></p>
             <dl>
-              <dt>ì–´ë¦°ì™•ìž</dt>
+              <dt>¾î¸°¿ÕÀÚ</dt>
             </dl>
             <dl>
-              <dd>ìƒí…ì¥íŽ˜ë¦¬</dd>
-            </dl>
-          </div>
-          <div class="book_display_2_1">
-            <p><img src="resources/images/2103010101.jpg" /></p>
-            <dl>
-              <dt>ì–´ë¦°ì™•ìž</dt>
-            </dl>
-            <dl>
-              <dd>ìƒí…ì¥íŽ˜ë¦¬</dd>
+              <dd>»ýÅØÁãÆä¸®</dd>
             </dl>
           </div>
           <div class="book_display_2_1">
             <p><img src="resources/images/2103010101.jpg" /></p>
             <dl>
-              <dt>ì–´ë¦°ì™•ìž</dt>
+              <dt>¾î¸°¿ÕÀÚ</dt>
             </dl>
             <dl>
-              <dd>ìƒí…ì¥íŽ˜ë¦¬</dd>
+              <dd>»ýÅØÁãÆä¸®</dd>
             </dl>
           </div>
           <div class="book_display_2_1">
             <p><img src="resources/images/2103010101.jpg" /></p>
             <dl>
-              <dt>ì–´ë¦°ì™•ìž</dt>
+              <dt>¾î¸°¿ÕÀÚ</dt>
             </dl>
             <dl>
-              <dd>ìƒí…ì¥íŽ˜ë¦¬</dd>
+              <dd>»ýÅØÁãÆä¸®</dd>
+            </dl>
+          </div>
+          <div class="book_display_2_1">
+            <p><img src="resources/images/2103010101.jpg" /></p>
+            <dl>
+              <dt>¾î¸°¿ÕÀÚ</dt>
+            </dl>
+            <dl>
+              <dd>»ýÅØÁãÆä¸®</dd>
             </dl>
           </div>
         </div>

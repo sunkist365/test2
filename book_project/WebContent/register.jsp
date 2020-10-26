@@ -6,11 +6,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
+    <script type="text/javascript" src="resources/js/member.js"></script>
   </head>
   <body>
     <div class="base0">
       <div align="center">
-        <form action="registerOk.jsp" method="post">
+        <form action="registerOk.jsp" method="post" name="reg_mem">
           <h2>북스코드 회원가입을 환영합니다.</h2>
           <hr />
           <div class="table_mng">
@@ -25,7 +26,8 @@
                 <th style="background-color: #b2ebf4">아 이 디</th>
                 <td>
                   <input type="text" name="cs_id" size="20" maxlength="12" />
-                  <input type="button" value="id중복확인" onclick="window.open('id_check_jsp', '팝업창 이름', 'width=#, height=')">
+                  <!--아이디 중복확인 추가 예정  -->
+                  <!-- <input type="button" value="id중복확인" onclick="window.open('id_check_jsp', '팝업창 이름', 'width=#, height=')"> --> 
                 </td>
               </tr>
 

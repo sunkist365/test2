@@ -13,11 +13,24 @@ pageEncoding="UTF-8"%>
   <body>
     <jsp:include page="header.jsp"></jsp:include>
     <main>
-      <div class="jumbotron main_visual">
-        <div class="container">
-          <div></div>
+        <div id="slide">
+			  <input type="radio" name="pos" id="pos1" checked>
+			  <input type="radio" name="pos" id="pos2">
+			  <input type="radio" name="pos" id="pos3">
+			  <input type="radio" name="pos" id="pos4">
+			  <ul>
+			    <li><div class="container main_slide"><img src="resources/images/main01.jpg"></div></li>
+			    <li><div class="container main_slide"><img src="resources/images/main02.jpg"></div></li>
+			    <li><div class="container main_slide"><img src="resources/images/main03.jpg"></div></li>
+			    <li><div class="container main_slide"><img src="resources/images/main04.jpg"></div></li>
+			  </ul>
+ 			  <p class="pos">
+			    <label for="pos1"></label>
+			    <label for="pos2"></label>
+			    <label for="pos3"></label>
+			    <label for="pos4"></label>
+			  </p>
         </div>
-      </div>
     </main>
 
     <section>

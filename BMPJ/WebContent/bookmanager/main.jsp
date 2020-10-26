@@ -16,8 +16,7 @@
             <div class="login_wrap">
                 <div class="login">
                     <ul>
-                        <li>
-                        <%
+                        <li><%
                        		request.setCharacterEncoding("UTF-8");
 							String id = (String)session.getAttribute("id");
 							ManagerCheck mCk=new ManagerCheck();

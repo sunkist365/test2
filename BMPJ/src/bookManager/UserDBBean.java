@@ -36,7 +36,6 @@ public class UserDBBean {
 		}
 	}
 	
-	
 	public int insertUser(UserBean user) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

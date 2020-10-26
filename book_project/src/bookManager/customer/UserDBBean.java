@@ -101,7 +101,7 @@ public class UserDBBean {
 		try {
 			conn = getMySQLConnection();
 			
-			sql = "insert into Customer(cs_id,cs_pwd,cs_name,cs_tel,cs_addres,cs_email) "
+			sql = "insert into Customer(cs_id,cs_pwd,cs_name,cs_tel,cs_address,cs_email) "
 					+ "values(?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			
