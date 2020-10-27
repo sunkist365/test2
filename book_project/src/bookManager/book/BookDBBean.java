@@ -24,58 +24,6 @@ public class BookDBBean {
 		return ds.getConnection();
 	}
 	
-	//insert_book.jsp에서 받은 정보를 insert_book_ok.jsp에서 데이터베이스 입력
-	public int insertBook(BookBean book) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		String sql="";
-		int num = 0; //book_no
-		
-		try {
-			con = getMySQLConnection();
-			
-			//book_no 부여(추후 장르별로 book_no부여 할 예정)//
-			sql = "SELECT MAX(book_no) FROM BookList";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			//book_no의 초기값을 100000으로 주고 추가되는 책들은 1씩 더한다.
-			if(rs.next()) {
-				num = rs.getInt(1) + 1;
-			}else{
-				num = 100000;
-			}
-			
-			//DB에 데이터를 입력
-			sql = "INSERT INTO BookList(book_no, B_TITLE, B_AUTHOR, B_GENRE, B_PRICE"
-					+ ", B_STORY, B_YEAR, B_LIST) VALUES(?,?,?,?,?,?,?,?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setString(2, book.getB_title());
-			pstmt.setString(3, book.getB_author());
-			pstmt.setString(4, book.getB_genre());
-			pstmt.setInt(5, book.getB_price());
-			pstmt.setString(6, book.getB_story());
-			pstmt.setInt(7, book.getB_year());
-			pstmt.setString(8, book.getB_list());
-			
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(con!=null) con.close();				
-			} catch(Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return 1; //완료시에 1을 반환한다.	
-	}
-	
 	//검색어를 입력받아 결과를 보여줄 목록
 	//해당 페이지에 게시글을 정해진만큼 보여주기 위해 현재 페이지를 매개변수로 받는다.
 	public ArrayList<BookBean> listBoard(String search_word, String currentPage) {
@@ -209,6 +157,4 @@ public class BookDBBean {
 		}
 		return book;
 	}
-	
-	
 }

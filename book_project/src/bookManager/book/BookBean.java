@@ -10,6 +10,7 @@ public class BookBean {
 	private int b_year;
 	private String b_list;
 	private String b_img;
+//	private int b_amount;
 	
 	public static int dataPerPage = 10; //한 페이지에 보일 게시물 수
 	public static int totalPage = 1;	//총 페이지 수 (총 데이터 수 / dataPerPage)

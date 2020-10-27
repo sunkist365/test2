@@ -25,13 +25,6 @@ nav {
 	text-align: left;
 }
 
-section {
-	background-color: #cccccc;
-	height: 850px;
-	font-size: 12px;
-	width: 100%
-}
-
 footer {
 	background-color: #6699ff;
 	text-align: center;
@@ -47,6 +40,9 @@ table {
 
 td {
 	border: 1px solid #555555;	
+}
+th{
+	text-align: center;
 }
 
 #span1 {
@@ -75,11 +71,6 @@ A:hover {
 	color: #000000;
 	font-weight :bolder;
 	text-decoration: underline;
-}
-.bumle {
-	margin-left: 735px;
-	margin-bottom: 5px;
-	padding: 0;
 }
 
 </style>
